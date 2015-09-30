@@ -4,6 +4,7 @@ import me.thomas.security.ServiceImpl;
 import me.thomas.security.model.UserPermission;
 import me.thomas.security.persistence.UserMapper;
 import me.thomas.security.service.IUserService;
+import org.apache.ibatis.binding.BindingException;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,8 @@ public class UserService extends ServiceImpl implements IUserService {
         try {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             return userMapper.getResourceActions(userPermission);
+        } catch (BindingException e) {
+            return 0;
         } finally {
             session.close();
         }

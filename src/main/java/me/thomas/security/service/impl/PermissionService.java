@@ -7,6 +7,7 @@ import me.thomas.security.persistence.PermissionMapper;
 import me.thomas.security.service.IPermissionService;
 import me.thomas.security.service.IRoleService;
 import me.thomas.security.service.IUserService;
+import org.apache.ibatis.binding.BindingException;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,8 @@ public class PermissionService extends ServiceImpl implements IPermissionService
         try {
             PermissionMapper permissionMapper = session.getMapper(PermissionMapper.class);
             return permissionMapper.getActionValue(permission);
+        } catch (BindingException e) {
+            return 0xFFFF;
         } finally {
             session.close();
         }

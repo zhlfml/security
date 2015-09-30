@@ -4,6 +4,7 @@ import me.thomas.security.ServiceImpl;
 import me.thomas.security.model.RolePermission;
 import me.thomas.security.persistence.RoleMapper;
 import me.thomas.security.service.IRoleService;
+import org.apache.ibatis.binding.BindingException;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,8 @@ public class RoleService extends ServiceImpl implements IRoleService {
         try {
             RoleMapper roleMapper = session.getMapper(RoleMapper.class);
             return roleMapper.getResourceActions(rolePermission);
+        } catch (BindingException e) {
+            return 0;
         } finally {
             session.close();
         }
