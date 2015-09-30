@@ -7,7 +7,7 @@
     <version>0.1</version>
     <packaging>jar</packaging>
 
-    <name>ww-security</name>
+    <name>security</name>
     <url>http://maven.apache.org</url>
 
     <properties>
