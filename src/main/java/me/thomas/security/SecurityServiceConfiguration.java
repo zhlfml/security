@@ -51,7 +51,7 @@ public class SecurityServiceConfiguration implements SecurityServices {
         if (sqlSessionFactory == null) {
             Environment environment = new Environment("default", new ManagedTransactionFactory(), dataSource);
             Configuration configuration = new Configuration(environment);
-            configuration.getTypeAliasRegistry().registerAliases("com.weiwend.security.model");
+            configuration.getTypeAliasRegistry().registerAliases("me.thomas.security.model");
             configuration.addMapper(UserMapper.class);
             configuration.addMapper(RoleMapper.class);
             configuration.addMapper(PermissionMapper.class);
