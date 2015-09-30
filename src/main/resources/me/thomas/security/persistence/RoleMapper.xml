@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.thomas.security.persistence.RoleMapper">
+
+    <insert id="saveResourceActions" parameterType="rolePermission">
+        INSERT security_role_permission(role_id, resource, actions) VALUES (#{roleId}, #{resource}, #{actions})
+    </insert>
+
+    <select id="getResourceActions" parameterType="rolePermission" resultType="int">
+        SELECT actions FROM security_role_permission WHERE role_id = #{roleId} AND resource = #{resource}
+    </select>
+
+    <update id="updateResourceActions" parameterType="rolePermission">
+        UPDATE security_role_permission SET actions = #{actions} WHERE role_id = #{roleId} AND resource = #{resource}
+    </update>
+
+</mapper>
