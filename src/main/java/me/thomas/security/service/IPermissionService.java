@@ -7,8 +7,6 @@ import me.thomas.security.def.PrincipalType;
  */
 public interface IPermissionService {
 
-    int getActionValue(String resource, String action);
-
     void grantPermission(PrincipalType principalType, String principalId, String resource, String[] permissionActions);
 
     void revokePermission(PrincipalType principalType, String principalId, String resource, String permissionAction);

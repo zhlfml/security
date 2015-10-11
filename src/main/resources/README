@@ -1,1 +1,12 @@
 1. Create tables which defined in security.sql to your database.
+
+2. Configuration
+<bean id="securityServiceConfiguration" class="me.thomas.security.SecurityServiceConfiguration">
+    <property name="dataSource" ref="dataSource"/>
+</bean>
+
+<bean id="securityServices" class="me.thomas.security.SecurityServicesFactoryBean">
+    <property name="securityServiceConfiguration" ref="securityServiceConfiguration"/>
+</bean>
+
+<bean id="permissionService" factory-bean="securityServices" factory-method="getPermissionService"/>

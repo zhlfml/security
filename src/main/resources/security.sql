@@ -6,7 +6,7 @@ CREATE TABLE `security_permission` (
   `action` varchar(12) NOT NULL,
   `value` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-);
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 /*Table structure for table `security_role_permission` */
 
@@ -15,7 +15,7 @@ CREATE TABLE `security_role_permission` (
   `resource` varchar(32) NOT NULL,
   `actions` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`role_id`,`resource`)
-);
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
 /*Table structure for table `security_user_permission` */
 
@@ -24,4 +24,4 @@ CREATE TABLE `security_user_permission` (
   `resource` varchar(32) NOT NULL,
   `actions` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`,`resource`)
-);
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
