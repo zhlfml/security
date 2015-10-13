@@ -3,6 +3,8 @@
 
 <mapper namespace="me.thomas.security.persistence.PermissionMapper">
 
+    <cache/>
+
     <select id="getActionValue" parameterType="permission" resultType="int">
         SELECT value FROM security_permission WHERE resource = #{resource} AND action = #{action}
     </select>

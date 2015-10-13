@@ -3,6 +3,8 @@
 
 <mapper namespace="me.thomas.security.persistence.UserMapper">
 
+    <cache/>
+
     <insert id="saveResourceActions" parameterType="userPermission">
         INSERT security_user_permission(user_id, resource, actions) VALUES (#{userId}, #{resource}, #{actions})
     </insert>

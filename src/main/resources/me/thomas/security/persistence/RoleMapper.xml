@@ -3,6 +3,8 @@
 
 <mapper namespace="me.thomas.security.persistence.RoleMapper">
 
+    <cache/>
+
     <insert id="saveResourceActions" parameterType="rolePermission">
         INSERT security_role_permission(role_id, resource, actions) VALUES (#{roleId}, #{resource}, #{actions})
     </insert>
