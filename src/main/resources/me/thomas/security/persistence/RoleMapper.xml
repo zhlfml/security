@@ -6,7 +6,7 @@
     <cache/>
 
     <insert id="saveResourceActions" parameterType="rolePermission">
-        INSERT security_role_permission(role_id, resource, actions) VALUES (#{roleId}, #{resource}, #{actions})
+        INSERT INTO security_role_permission(role_id, resource, actions) VALUES (#{roleId}, #{resource}, #{actions})
     </insert>
 
     <select id="getResourceActions" parameterType="rolePermission" resultType="int">
