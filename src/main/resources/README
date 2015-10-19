@@ -4,6 +4,13 @@
 <bean id="securityServiceConfiguration" class="me.thomas.security.SecurityServiceConfiguration">
     <property name="dataSource" ref="dataSource"/>
 </bean>
+Or
+<bean id="securityServiceConfiguration" class="me.thomas.security.SecurityServiceConfiguration">
+    <property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000"/>
+    <property name="jdbcDriver" value="org.h2.Driver"/>
+    <property name="jdbcUsername" value="sa"/>
+    <property name="jdbcPassword" value=""/>
+</bean>
 
 <bean id="securityServices" class="me.thomas.security.SecurityServicesFactoryBean">
     <property name="securityServiceConfiguration" ref="securityServiceConfiguration"/>
