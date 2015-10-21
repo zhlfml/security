@@ -9,4 +9,16 @@
         SELECT value FROM security_permission WHERE resource = #{resource} AND action = #{action}
     </select>
 
+    <select id="findAllResources" resultType="String">
+        SELECT DISTINCT resource FROM security_permission
+    </select>
+
+    <select id="findPermissionsByResource" parameterType="String" resultType="permission">
+        SELECT id, resource, action, value FROM security_permission WHERE resource = #{resource}
+    </select>
+
+    <update id="updateActionValue" parameterType="permission">
+        UPDATE security_permission SET value = #{value} WHERE resource = #{resource} AND action = #{action}
+    </update>
+
 </mapper>

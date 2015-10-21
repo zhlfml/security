@@ -1,10 +1,13 @@
 package me.thomas.security.model;
 
+import java.io.Serializable;
+
 /**
  * Created by zhaoxs on 2015/9/25 0025.
  */
-public class UserPermission {
+public class UserPermission implements Serializable {
 
+    private static final long serialVersionUID = 5330599411919809665L;
     private String userId;
     private String resource;
     private int actions;
