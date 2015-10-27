@@ -21,15 +21,18 @@ public class RoleService extends ServiceImpl implements IRoleService {
         rolePermission.setRoleId(roleId);
         rolePermission.setResource(resource);
 
+        Integer result = null;
         SqlSession session = sqlSessionFactory.openSession();
         try {
             RoleMapper roleMapper = session.getMapper(RoleMapper.class);
-            return roleMapper.getResourceActions(rolePermission);
+            result = roleMapper.getResourceActions(rolePermission);
         } catch (BindingException e) {
-            return 0;
+            logger.error(e.getMessage(), e);
         } finally {
             session.close();
         }
+
+        return result != null ? result.intValue() : 0;
     }
 
     public void mergeResourceActions(String roleId, String resource, int actions) {

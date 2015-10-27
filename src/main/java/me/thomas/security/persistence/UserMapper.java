@@ -7,7 +7,7 @@ import me.thomas.security.model.UserPermission;
  */
 public interface UserMapper {
 
-    int getResourceActions(UserPermission userPermission);
+    Integer getResourceActions(UserPermission userPermission);
 
     int saveResourceActions(UserPermission userPermission);
 

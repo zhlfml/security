@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface PermissionMapper {
 
-    int getActionValue(Permission permission);
+    Integer getActionValue(Permission permission);
 
     List<String> findAllResources();
 

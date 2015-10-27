@@ -21,15 +21,18 @@ public class UserService extends ServiceImpl implements IUserService {
         userPermission.setUserId(userId);
         userPermission.setResource(resource);
 
+        Integer result = null;
         SqlSession session = sqlSessionFactory.openSession();
         try {
             UserMapper userMapper = session.getMapper(UserMapper.class);
-            return userMapper.getResourceActions(userPermission);
+            result = userMapper.getResourceActions(userPermission);
         } catch (BindingException e) {
-            return 0;
+            logger.error(e.getMessage(), e);
         } finally {
             session.close();
         }
+
+        return result != null ? result.intValue() : 0;
     }
 
     public void mergeResourceActions(String userId, String resource, int actions) {

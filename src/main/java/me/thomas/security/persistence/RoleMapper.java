@@ -7,7 +7,7 @@ import me.thomas.security.model.RolePermission;
  */
 public interface RoleMapper {
 
-    int getResourceActions(RolePermission rolePermission);
+    Integer getResourceActions(RolePermission rolePermission);
 
     int saveResourceActions(RolePermission rolePermission);
 

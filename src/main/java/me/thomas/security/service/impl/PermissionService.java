@@ -61,7 +61,7 @@ public class PermissionService extends ServiceImpl implements IPermissionService
         int actionValue = this.getActionValue(resource, permissionAction);
 
         // 如果数据库中没有配置该操作对应的权限值，则默认谁都具有该操作的权限。
-        if (actionValue == -1) {
+        if (actionValue == 0) {
             return true;
         }
 
@@ -145,16 +145,18 @@ public class PermissionService extends ServiceImpl implements IPermissionService
         permission.setResource(resource);
         permission.setAction(action);
 
+        Integer result = null;
         SqlSession session = sqlSessionFactory.openSession();
         try {
             PermissionMapper permissionMapper = session.getMapper(PermissionMapper.class);
-            return permissionMapper.getActionValue(permission);
+            result = permissionMapper.getActionValue(permission);
         } catch (BindingException e) {
             logger.error(e.getMessage(), e);
-            return -1;
         } finally {
             session.close();
         }
+
+        return result != null ? result.intValue() : 0;
     }
 
     public void setUserService(IUserService userService) {
